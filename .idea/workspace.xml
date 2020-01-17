@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1404c5db-0224-44dc-a56f-2e5a60aa9d85" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kits.py" beforeDir="false" afterPath="$PROJECT_DIR$/kits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mary has a little lamb.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sound/101.wav" beforeDir="false" afterPath="$PROJECT_DIR$/sound/101.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sound/105.wav" beforeDir="false" afterPath="$PROJECT_DIR$/sound/105.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sound/111.wav" beforeDir="false" afterPath="$PROJECT_DIR$/sound/111.wav" afterDir="false" />
@@ -22,78 +19,6 @@
       <change beforePath="$PROJECT_DIR$/sound/91.wav" beforeDir="false" afterPath="$PROJECT_DIR$/sound/91.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sound/92.wav" beforeDir="false" afterPath="$PROJECT_DIR$/sound/92.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sound/93.wav" beforeDir="false" afterPath="$PROJECT_DIR$/sound/93.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (1).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (10).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (11).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (12).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (13).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (14).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (15).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (16).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (17).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (18).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (19).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (2).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (20).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (21).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (22).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (23).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (24).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (25).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (26).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (27).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (28).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (29).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (3).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (30).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (31).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (32).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (33).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (34).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (35).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (36).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (37).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (38).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (39).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (4).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (40).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (41).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (42).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (43).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (44).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (45).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (46).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (47).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (48).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (49).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (5).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (50).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (51).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (52).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (53).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (54).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (55).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (56).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (57).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (58).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (59).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (6).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (60).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (61).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (62).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (63).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (64).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (65).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (66).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (67).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (68).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (7).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (8).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/note (9).wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trash.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/try.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/try2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/try3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +62,7 @@
       <command value="e" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.demo">
+  <component name="RunManager" selected="Python.inputMethod">
     <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,6 +84,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="inputMethod" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/inputMethod.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="kits" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -172,27 +118,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kits.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="try" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\MyPython\game\project\trys\try.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -245,11 +170,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.inputMethod" />
         <item itemvalue="Python.demo" />
         <item itemvalue="Python.kits" />
         <item itemvalue="Python.try3" />
         <item itemvalue="Python.try2" />
-        <item itemvalue="Python.try" />
       </list>
     </recent_temporary>
   </component>
@@ -278,28 +203,28 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="714" y="386" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1579053846959" />
-    <state width="1059" height="564" key="GridCell.Tab.0.bottom" timestamp="1579242824085">
+    <state width="1059" height="564" key="GridCell.Tab.0.bottom" timestamp="1579249506167">
       <screen x="0" y="0" width="1080" height="1880" />
     </state>
-    <state width="1059" height="564" key="GridCell.Tab.0.bottom/0.0.1080.1880@0.0.1080.1880" timestamp="1579242824085" />
+    <state width="1059" height="564" key="GridCell.Tab.0.bottom/0.0.1080.1880@0.0.1080.1880" timestamp="1579249506167" />
     <state width="697" height="250" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1578933261131" />
     <state width="1899" height="289" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579078536421" />
-    <state width="1059" height="564" key="GridCell.Tab.0.center" timestamp="1579242824085">
+    <state width="1059" height="564" key="GridCell.Tab.0.center" timestamp="1579249506167">
       <screen x="0" y="0" width="1080" height="1880" />
     </state>
-    <state width="1059" height="564" key="GridCell.Tab.0.center/0.0.1080.1880@0.0.1080.1880" timestamp="1579242824085" />
+    <state width="1059" height="564" key="GridCell.Tab.0.center/0.0.1080.1880@0.0.1080.1880" timestamp="1579249506167" />
     <state width="697" height="250" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1578933261131" />
     <state width="1899" height="289" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579078536421" />
-    <state width="1059" height="564" key="GridCell.Tab.0.left" timestamp="1579242824085">
+    <state width="1059" height="564" key="GridCell.Tab.0.left" timestamp="1579249506167">
       <screen x="0" y="0" width="1080" height="1880" />
     </state>
-    <state width="1059" height="564" key="GridCell.Tab.0.left/0.0.1080.1880@0.0.1080.1880" timestamp="1579242824085" />
+    <state width="1059" height="564" key="GridCell.Tab.0.left/0.0.1080.1880@0.0.1080.1880" timestamp="1579249506167" />
     <state width="697" height="250" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1578933261131" />
     <state width="1899" height="289" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579078536421" />
-    <state width="1059" height="564" key="GridCell.Tab.0.right" timestamp="1579242824085">
+    <state width="1059" height="564" key="GridCell.Tab.0.right" timestamp="1579249506167">
       <screen x="0" y="0" width="1080" height="1880" />
     </state>
-    <state width="1059" height="564" key="GridCell.Tab.0.right/0.0.1080.1880@0.0.1080.1880" timestamp="1579242824085" />
+    <state width="1059" height="564" key="GridCell.Tab.0.right/0.0.1080.1880@0.0.1080.1880" timestamp="1579249506167" />
     <state width="697" height="250" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1578933261131" />
     <state width="1899" height="289" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579078536421" />
     <state x="51" y="74" key="SettingsEditor" timestamp="1578933035306">
@@ -314,10 +239,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578922356717" />
-    <state x="287" y="398" width="672" height="1387" key="search.everywhere.popup" timestamp="1579181927322">
+    <state x="287" y="398" width="672" height="1387" key="search.everywhere.popup" timestamp="1579249035916">
       <screen x="0" y="0" width="1080" height="1880" />
     </state>
-    <state x="287" y="398" width="672" height="1387" key="search.everywhere.popup/0.0.1080.1880@0.0.1080.1880" timestamp="1579181927322" />
+    <state x="287" y="398" width="672" height="1387" key="search.everywhere.popup/0.0.1080.1880@0.0.1080.1880" timestamp="1579249035916" />
     <state x="383" y="195" width="672" height="678" key="search.everywhere.popup/0.0.1440.920@0.0.1440.920" timestamp="1578825249284" />
     <state x="511" y="220" width="896" height="767" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578905076891" />
   </component>
