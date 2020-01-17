@@ -1,37 +1,9 @@
 import time
-from os import path
-import pygame
-from kits import TextInput, ScriptGenerator, generate_scale
+from kits import ScriptGenerator, generate_scale, load_sounds, Note
+from inputMethod import TextInput
 from threading import Thread
-
-WIDTH = 500
-HEIGHT = 600
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BAR_SIZE = (200, 20)
-BAR_POS = ((WIDTH - BAR_SIZE[0]) / 2, (HEIGHT - BAR_SIZE[1]) / 2)
-BORDER_COLOR = (50, 50, 50)
-BAR_COLOR = (0, 128, 0)
-DEFAULT_PIECE_NAME = "script"
-UI_FONT = "consolas"
-UI_FONT_SIZE = 20
-KEY_NUM = 14
-KEY_LIST = [pygame.K_TAB,
-            pygame.K_q,
-            pygame.K_w,
-            pygame.K_e,
-            pygame.K_r,
-            pygame.K_t,
-            pygame.K_y,
-            pygame.K_u,
-            pygame.K_i,
-            pygame.K_o,
-            pygame.K_p,
-            pygame.K_LEFTBRACKET,
-            pygame.K_RIGHTBRACKET,
-            pygame.K_BACKSLASH]
+from constants import *
+import pygame
 
 pygame.mixer.pre_init(44100, -16, 1, 2048)
 pygame.mixer.init()
@@ -40,12 +12,8 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Piano Demo")
 clock = pygame.time.Clock()
 
-sound_dir = path.join(path.dirname(__file__), "sound")
-img_dir = path.join(path.dirname(__file__), "img")
-piano_sound_track_pack = []
 switch_sound = pygame.mixer.Sound(path.join(sound_dir, "switch.ogg"))
-
-key_dic = {}
+key_channel_dic = {}
 
 
 def draw_text(text, font_size, color, x, y):
@@ -55,6 +23,88 @@ def draw_text(text, font_size, color, x, y):
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x, y)
     screen.blit(text_surface, text_rect)
+
+
+class Composer(TextInput):
+    note_list = []
+    begin_to_input = False
+
+    def character(self, key):
+        if not self.begin_to_input:
+            self.begin_to_input = True
+            self.start_time = pygame.time.get_ticks()
+        if (len(self.input_string) < self.max_string_length or self.max_string_length == -1) and key in KEY_LIST:
+            note = Note(key, pygame.time.get_ticks() - self.start_time, None, note_dic[key])
+            self.note_list.append(note)
+
+    def status_check(self, key):
+        try:
+            if self.key_status[key][0]:
+                self.key_status[key][1] += self.clock.tick()
+                if self.key_status[key][1] > self.keyboard_interval:
+                    if key == pygame.K_BACKSPACE:
+                        self.backspace()
+                    elif key == pygame.K_DELETE:
+                        self.delete()
+                    elif key == pygame.K_RIGHT:
+                        self.right()
+                    elif key == pygame.K_LEFT:
+                        self.left()
+                    self.key_status[key][1] %= self.keyboard_interval
+        except:
+            pass
+
+    def release_key(self, key):
+        if key in KEY_LIST:
+            for i in range(-1, -len(self.note_list) - 1, -1):
+                if self.note_list[i].key == key:
+                    note = self.note_list[i]
+                    note.duration = pygame.time.get_ticks() - self.start_time - note.start
+                    # s = "{}, {} ".format(note.start, note.duration)
+                    # self.input_string = self.input_string[:self.cursor_position] + s + \
+                    #                     self.input_string[self.cursor_position:]
+                    # self.cursor_position += len(s)
+                    self.note_list.sort(key = lambda note: note.start)
+                    self.input_string = ""
+                    self.cursor_position = 0
+                    for note in self.note_list:
+                        if note.key == pygame.K_TAB:
+                            k = 'tab'
+                        else:
+                            k = chr(note.key)
+                        s = "{},{},{} ".format(k, str(note.start), str(note.duration))
+                        self.input_string += s
+                        self.cursor_position += len(s)
+                    return
+        self.key_status[key] = [False, 0]
+        self.clock.tick()
+
+    def press_key(self, key):
+        if key == pygame.K_LEFT:
+            self.left()
+        elif key == pygame.K_RIGHT:
+            self.right()
+        elif key == pygame.K_BACKSPACE:
+            self.backspace()
+        elif key == pygame.K_DELETE:
+            self.delete()
+        elif key in KEY_LIST:
+            self.character(key)
+            return
+        elif key == pygame.K_s and pygame.key.get_mods() & pygame.KMOD_CTRL:
+            self.audition()
+            return
+        self.key_init(key)
+
+    def audition(self):
+        self.clock.tick()
+        timer = 0
+        index = 0
+        while index < len(self.note_list):
+            timer += self.clock.tick()
+            if timer > self.note_list[index].start:
+                self.note_list[index].play()
+                index += 1
 
 
 class UI:
@@ -115,37 +165,38 @@ class UI:
             self.function()
         self.draw()
 
-    def edit(self, initial_string, play=False, compose_mode=False):
-        textbox = TextInput(initial_string=initial_string, max_width=480, max_height=580, compose_mode=compose_mode)
+    def compose(self, initial_string):
+        composer = Composer(initial_string=initial_string, max_width=480, max_height=580)
+        composer.note_list = []
+        composer.input_string = ""
+        while True:
+            composer_surface = composer.get_surface()
+            screen.fill(WHITE)
+            events = pygame.event.get()
+            for event in events:
+                self.play_note(event)
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        return composer.get_string()
+                    elif event.key == pygame.K_ESCAPE:
+                        return
+            composer.update(events)
+            screen.blit(composer_surface, (10, 10))
+            pygame.display.flip()
+
+    def edit(self, initial_string):
+        textbox = TextInput(initial_string=initial_string, max_width=480, max_height=580)
         textbox.clock.tick()
         while True:
             box_surface = textbox.get_surface()
             screen.fill(WHITE)
             events = pygame.event.get()
             for event in events:
-                if play:
-                    self.play_note(event)
                 if event.type == pygame.QUIT:
                     pygame.quit()
                 if event.type == pygame.KEYDOWN:
-                    if play:
-                        if event.key == pygame.K_s and pygame.key.get_mods() & pygame.KMOD_CTRL:
-                            chan = pygame.mixer.find_channel()
-                            line = textbox.get_string()
-                            if line[-1] >= '9' or line[-1] < '0':
-                                line = line + ',0'
-                            item_list = line.split()
-                            print(item_list)
-                            for item in item_list:
-                                note, duration = item.split(',')
-                                if note != 'rest':
-                                    if note == 'tab':
-                                        note = 9
-                                    else:
-                                        note = ord(note)
-                                    chan.queue(note_dic[note])
-                                time.sleep(int(duration) / 1000)
-                                chan.fadeout(200)
                     if event.key == pygame.K_RETURN:
                         return textbox.get_string()
                     elif event.key == pygame.K_ESCAPE:
@@ -156,38 +207,48 @@ class UI:
             pygame.display.flip()
 
     def get_script(self):
-        original_script = self.edit("do re mi fa so la xi", play=True, compose_mode=True)
+        original_script = self.compose("")
         if not original_script:
             return
-        script_name = self.edit("new script")
+        script_name = self.edit("script")
         if not script_name:
             return
         generator = ScriptGenerator()
         try:
             generator.generate_script(original_script, script_name)
             draw_text("Script generated", UI_FONT_SIZE, GREEN, WIDTH / 2, 500)
-        except:
+            pygame.display.flip()
+        except Exception as e:
+            print(e)
             draw_text("Fail to generate script", UI_FONT_SIZE, RED, WIDTH / 2, 500)
+            pygame.display.flip()
 
     def play_piece(self, piece_name, stop):
         try:
-            chan = pygame.mixer.find_channel()
-            with open(piece_name + ".txt", "r") as f:
+            with open(path.join(scripts_dir, piece_name + ".txt"), "r") as f:
                 for line in f.readlines():
                     item_list = line.split()
+                    play_list = []
                     print(item_list)
                     for item in item_list:
-                        note, duration = item.split(',')
-                        if stop():
-                            return
-                        if note != 'rest':
-                            if note == 'tab':
-                                note = 9
-                            else:
-                                note = ord(note)
-                            chan.queue(note_dic[note])
-                        time.sleep(int(duration) / 1000)
-                        chan.fadeout(int(duration))
+                        key, start, duration = item.split(',')
+                        if key == 'tab':
+                            key = 9
+                        else:
+                            key = ord(key)
+                        note = Note(key, int(start), int(duration), note_dic[key])
+                        play_list.append(note)
+            clock.tick()
+            timer = 0
+            index = 0
+            while index < len(play_list):
+                if stop():
+                    return
+                timer += clock.tick()
+                if timer >= play_list[index].start:
+                    play_list[index].play()
+                    index += 1
+
         except Exception as e:
             print(e)
             draw_text("Cannot play script!", UI_FONT_SIZE, RED, WIDTH / 2, 500)
@@ -230,48 +291,23 @@ def get_input():
             pygame.display.flip()
 
 
-def load_sound_pack():
-    for i in range(0, 68):
-        piano_sound_track_pack.append(pygame.mixer.Sound(path.join(sound_dir, "note ({}).wav".format(i + 1))))
-
-
-def generate_pitch():
-    note_dic = {}
-    for i in range(9, 122):
-        try:
-            note_dic[i] = pygame.mixer.Sound(path.join(sound_dir, "{}.wav".format(i)))
-        except:
-            pass
-    return note_dic
-
-
-note_dic = generate_pitch()
-key_channel_dic = {}
-
-
-def main():
-    load_sound_pack()
-    pygame.mixer.set_num_channels(14)
-    ui = UI(1)
-    # scale_generator = generate_scale()
-    # for progress in range(KEY_NUM):
-    #     next(scale_generator)
-    #     ui.draw_bar(BAR_POS, BAR_SIZE, BORDER_COLOR, BAR_COLOR, (progress + 1) / 14)
-    #     pygame.display.flip()
-
-    ui.draw()
-    while 1:
-        clock.tick(100)
-        event_list = pygame.event.get()
-        for event in event_list:
-            if ui.selected == 1 or ui.selected == 3:
-                ui.play_note(event)
-            if event.type == pygame.QUIT:
-                pygame.quit()
-            elif event.type == pygame.KEYDOWN:
-                ui.key_pressed(event.key)
-        pygame.display.flip()
-
-
-if __name__ == '__main__':
-    main()
+pygame.mixer.set_num_channels(14)
+ui = UI(1)
+scale_generator = generate_scale()
+for progress in range(KEY_NUM):
+    next(scale_generator)
+    ui.draw_bar(BAR_POS, BAR_SIZE, BORDER_COLOR, BAR_COLOR, (progress + 1) / 14)
+    pygame.display.flip()
+ui.draw()
+note_dic = load_sounds()
+while 1:
+    clock.tick(100)
+    event_list = pygame.event.get()
+    for event in event_list:
+        if ui.selected == 1 or ui.selected == 3:
+            ui.play_note(event)
+        if event.type == pygame.QUIT:
+            pygame.quit()
+        elif event.type == pygame.KEYDOWN:
+            ui.key_pressed(event.key)
+    pygame.display.flip()

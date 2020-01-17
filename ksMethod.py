@@ -1,10 +1,8 @@
-import numpy as np
 import wave
-import pygame
-from os import path
+import numpy as np
+
 
 class KS(object):
-
     def __init__(self, sample_rate=44100, freq=220.):
         self.sample_rate = sample_rate
         self.period = int(sample_rate / freq)
@@ -32,7 +30,6 @@ class KS(object):
         for i in range(length - 1):
             self.__buffer()
             self.block = np.append(self.block, self.chunk)
-        # convert the result from float to int
         self.__convert_to_int16()
         print('Done. %s frames for total.' % self.total_len)
         return self.block
@@ -48,29 +45,3 @@ class KS(object):
         f.setframerate(self.sample_rate)
         f.writeframes(self.block)
         f.close()
-
-
-def generate_pitch():
-    ratio = 2 ** (1 / 12)
-    note_dic = {}
-    note_dic[ord('`')] = 220 / ratio
-    for index, key in enumerate(range(pygame.K_1, pygame.K_9 + 1)):
-        note_dic[key] = 220 * (ratio ** index)
-    note_dic[pygame.K_0] = 220 * (ratio ** 9)
-    note_dic[pygame.K_MINUS] = 220 * (ratio ** 10)
-    note_dic[pygame.K_EQUALS] = 220 * (ratio ** 11)
-    note_dic[pygame.K_BACKSPACE] = 220 * (ratio ** 12)
-    return note_dic
-
-
-def generate_scale():
-    note_dic = generate_pitch()
-    coefficient = 2 ** (1 / 12)
-    a = coefficient
-    pygame.init()
-    for key, value in note_dic.items():
-        k = KS(44100, value)
-        k.set_factor(1)
-        k.generator(int(1000 * a))
-        a *= coefficient
-        k.save_to_file(path.join(__file__, "{}.wav".format(key)))
